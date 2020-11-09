@@ -1,9 +1,11 @@
 name: "MobileNetV3"
 input: "blob1"
-input_dim: 1
-input_dim: 3
-input_dim: 224
-input_dim: 224
+input_shape {
+  dim: 1
+  dim: 3
+  dim: 224
+  dim: 224
+}
 layer {
   name: "conv1"
   type: "Convolution"
@@ -28,7 +30,7 @@ layer {
   bottom: "conv1"
   top: "conv1"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -52,19 +54,19 @@ layer {
   }
 }
 layer {
-  name: "relus1"
+  name: "relu1"
   type: "ReLU6"
   bottom: "power1"
-  top: "relus1"
+  top: "relu1"
 }
 layer {
   name: "power2"
   type: "Power"
-  bottom: "relus1"
+  bottom: "relu1"
   top: "power2"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -102,7 +104,7 @@ layer {
   bottom: "conv2"
   top: "conv2"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -115,15 +117,15 @@ layer {
   }
 }
 layer {
-  name: "relu1"
-  type: "ReLU"
+  name: "relu2"
+  type: "ReLU6"
   bottom: "conv2"
-  top: "relu1"
+  top: "relu2"
 }
 layer {
   name: "conv3"
   type: "Convolution"
-  bottom: "relu1"
+  bottom: "relu2"
   top: "conv3"
   convolution_param {
     num_output: 16
@@ -144,7 +146,7 @@ layer {
   bottom: "conv3"
   top: "conv3"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -190,7 +192,7 @@ layer {
   bottom: "conv4"
   top: "conv4"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -203,15 +205,15 @@ layer {
   }
 }
 layer {
-  name: "relu2"
-  type: "ReLU"
+  name: "relu3"
+  type: "ReLU6"
   bottom: "conv4"
-  top: "relu2"
+  top: "relu3"
 }
 layer {
   name: "conv5"
   type: "DepthwiseConvolution"
-  bottom: "relu2"
+  bottom: "relu3"
   top: "conv5"
   convolution_param {
     num_output: 64
@@ -232,7 +234,7 @@ layer {
   bottom: "conv5"
   top: "conv5"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -245,15 +247,15 @@ layer {
   }
 }
 layer {
-  name: "relu3"
-  type: "ReLU"
+  name: "relu4"
+  type: "ReLU6"
   bottom: "conv5"
-  top: "relu3"
+  top: "relu4"
 }
 layer {
   name: "conv6"
   type: "Convolution"
-  bottom: "relu3"
+  bottom: "relu4"
   top: "conv6"
   convolution_param {
     num_output: 24
@@ -274,7 +276,7 @@ layer {
   bottom: "conv6"
   top: "conv6"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -310,7 +312,7 @@ layer {
   bottom: "conv7"
   top: "conv7"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -323,15 +325,15 @@ layer {
   }
 }
 layer {
-  name: "relu4"
-  type: "ReLU"
+  name: "relu5"
+  type: "ReLU6"
   bottom: "conv7"
-  top: "relu4"
+  top: "relu5"
 }
 layer {
   name: "conv8"
   type: "DepthwiseConvolution"
-  bottom: "relu4"
+  bottom: "relu5"
   top: "conv8"
   convolution_param {
     num_output: 72
@@ -352,7 +354,7 @@ layer {
   bottom: "conv8"
   top: "conv8"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -365,15 +367,15 @@ layer {
   }
 }
 layer {
-  name: "relu5"
-  type: "ReLU"
+  name: "relu6"
+  type: "ReLU6"
   bottom: "conv8"
-  top: "relu5"
+  top: "relu6"
 }
 layer {
   name: "conv9"
   type: "Convolution"
-  bottom: "relu5"
+  bottom: "relu6"
   top: "conv9"
   convolution_param {
     num_output: 24
@@ -394,7 +396,7 @@ layer {
   bottom: "conv9"
   top: "conv9"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -440,7 +442,7 @@ layer {
   bottom: "conv10"
   top: "conv10"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -453,15 +455,15 @@ layer {
   }
 }
 layer {
-  name: "relu6"
-  type: "ReLU"
+  name: "relu7"
+  type: "ReLU6"
   bottom: "conv10"
-  top: "relu6"
+  top: "relu7"
 }
 layer {
   name: "conv11"
   type: "DepthwiseConvolution"
-  bottom: "relu6"
+  bottom: "relu7"
   top: "conv11"
   convolution_param {
     num_output: 72
@@ -482,7 +484,7 @@ layer {
   bottom: "conv11"
   top: "conv11"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -527,15 +529,15 @@ layer {
   }
 }
 layer {
-  name: "relu7"
-  type: "ReLU"
+  name: "relu8"
+  type: "ReLU6"
   bottom: "fc1"
-  top: "relu7"
+  top: "relu8"
 }
 layer {
   name: "fc2"
   type: "InnerProduct"
-  bottom: "relu7"
+  bottom: "relu8"
   top: "fc2"
   inner_product_param {
     num_output: 72
@@ -560,19 +562,19 @@ layer {
   }
 }
 layer {
-  name: "relus2"
+  name: "relu9"
   type: "ReLU6"
   bottom: "power3"
-  top: "relus2"
+  top: "relu9"
 }
 layer {
   name: "power4"
   type: "Power"
-  bottom: "relus2"
+  bottom: "relu9"
   top: "power4"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -583,25 +585,29 @@ layer {
   top: "route2"
 }
 layer {
-  name: "scale1"
+  name: "mul2"
+  #type: "Eltwise"
   type: "Scale"
   bottom: "conv11"
   bottom: "route2"
-  top: "scale1"
+  top: "mul2"
   scale_param {
     axis: 0
   }
+  #eltwise_param {
+  #  operation: PROD
+  #}
 }
 layer {
-  name: "relu8"
-  type: "ReLU"
-  bottom: "scale1"
-  top: "relu8"
+  name: "relu10"
+  type: "ReLU6"
+  bottom: "mul2"
+  top: "relu10"
 }
 layer {
   name: "conv12"
   type: "Convolution"
-  bottom: "relu8"
+  bottom: "relu10"
   top: "conv12"
   convolution_param {
     num_output: 40
@@ -622,7 +628,7 @@ layer {
   bottom: "conv12"
   top: "conv12"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -658,7 +664,7 @@ layer {
   bottom: "conv13"
   top: "conv13"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -671,15 +677,15 @@ layer {
   }
 }
 layer {
-  name: "relu9"
-  type: "ReLU"
+  name: "relu11"
+  type: "ReLU6"
   bottom: "conv13"
-  top: "relu9"
+  top: "relu11"
 }
 layer {
   name: "conv14"
   type: "DepthwiseConvolution"
-  bottom: "relu9"
+  bottom: "relu11"
   top: "conv14"
   convolution_param {
     num_output: 120
@@ -700,7 +706,7 @@ layer {
   bottom: "conv14"
   top: "conv14"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -745,15 +751,15 @@ layer {
   }
 }
 layer {
-  name: "relu10"
-  type: "ReLU"
+  name: "relu12"
+  type: "ReLU6"
   bottom: "fc3"
-  top: "relu10"
+  top: "relu12"
 }
 layer {
   name: "fc4"
   type: "InnerProduct"
-  bottom: "relu10"
+  bottom: "relu12"
   top: "fc4"
   inner_product_param {
     num_output: 120
@@ -778,19 +784,19 @@ layer {
   }
 }
 layer {
-  name: "relus3"
+  name: "relu13"
   type: "ReLU6"
   bottom: "power5"
-  top: "relus3"
+  top: "relu13"
 }
 layer {
   name: "power6"
   type: "Power"
-  bottom: "relus3"
+  bottom: "relu13"
   top: "power6"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -801,25 +807,29 @@ layer {
   top: "route4"
 }
 layer {
-  name: "scale2"
+  name: "mul3"
+  #type: "Eltwise"
   type: "Scale"
   bottom: "conv14"
   bottom: "route4"
-  top: "scale2"
+  top: "mul3"
   scale_param {
     axis: 0
   }
+  #eltwise_param {
+  #  operation: PROD
+  #}
 }
 layer {
-  name: "relu11"
-  type: "ReLU"
-  bottom: "scale2"
-  top: "relu11"
+  name: "relu14"
+  type: "ReLU6"
+  bottom: "mul3"
+  top: "relu14"
 }
 layer {
   name: "conv15"
   type: "Convolution"
-  bottom: "relu11"
+  bottom: "relu14"
   top: "conv15"
   convolution_param {
     num_output: 40
@@ -840,7 +850,7 @@ layer {
   bottom: "conv15"
   top: "conv15"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -886,7 +896,7 @@ layer {
   bottom: "conv16"
   top: "conv16"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -899,15 +909,15 @@ layer {
   }
 }
 layer {
-  name: "relu12"
-  type: "ReLU"
+  name: "relu15"
+  type: "ReLU6"
   bottom: "conv16"
-  top: "relu12"
+  top: "relu15"
 }
 layer {
   name: "conv17"
   type: "DepthwiseConvolution"
-  bottom: "relu12"
+  bottom: "relu15"
   top: "conv17"
   convolution_param {
     num_output: 120
@@ -928,7 +938,7 @@ layer {
   bottom: "conv17"
   top: "conv17"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -973,15 +983,15 @@ layer {
   }
 }
 layer {
-  name: "relu13"
-  type: "ReLU"
+  name: "relu16"
+  type: "ReLU6"
   bottom: "fc5"
-  top: "relu13"
+  top: "relu16"
 }
 layer {
   name: "fc6"
   type: "InnerProduct"
-  bottom: "relu13"
+  bottom: "relu16"
   top: "fc6"
   inner_product_param {
     num_output: 120
@@ -1006,19 +1016,19 @@ layer {
   }
 }
 layer {
-  name: "relus4"
+  name: "relu17"
   type: "ReLU6"
   bottom: "power7"
-  top: "relus4"
+  top: "relu17"
 }
 layer {
   name: "power8"
   type: "Power"
-  bottom: "relus4"
+  bottom: "relu17"
   top: "power8"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -1029,25 +1039,29 @@ layer {
   top: "route6"
 }
 layer {
-  name: "scale3"
+  name: "mul4"
+  #type: "Eltwise"
   type: "Scale"
   bottom: "conv17"
   bottom: "route6"
-  top: "scale3"
+  top: "mul4"
   scale_param {
     axis: 0
   }
+  #eltwise_param {
+  #  operation: PROD
+  #}
 }
 layer {
-  name: "relu14"
-  type: "ReLU"
-  bottom: "scale3"
-  top: "relu14"
+  name: "relu18"
+  type: "ReLU6"
+  bottom: "mul4"
+  top: "relu18"
 }
 layer {
   name: "conv18"
   type: "Convolution"
-  bottom: "relu14"
+  bottom: "relu18"
   top: "conv18"
   convolution_param {
     num_output: 40
@@ -1068,7 +1082,7 @@ layer {
   bottom: "conv18"
   top: "conv18"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1114,7 +1128,7 @@ layer {
   bottom: "conv19"
   top: "conv19"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1138,28 +1152,28 @@ layer {
   }
 }
 layer {
-  name: "relus5"
+  name: "relu19"
   type: "ReLU6"
   bottom: "power9"
-  top: "relus5"
+  top: "relu19"
 }
 layer {
   name: "power10"
   type: "Power"
-  bottom: "relus5"
+  bottom: "relu19"
   top: "power10"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul2"
+  name: "mul5"
   type: "Eltwise"
   bottom: "conv19"
   bottom: "power10"
-  top: "mul2"
+  top: "mul5"
   eltwise_param {
     operation: PROD
   }
@@ -1167,7 +1181,7 @@ layer {
 layer {
   name: "conv20"
   type: "DepthwiseConvolution"
-  bottom: "mul2"
+  bottom: "mul5"
   top: "conv20"
   convolution_param {
     num_output: 240
@@ -1188,7 +1202,7 @@ layer {
   bottom: "conv20"
   top: "conv20"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1212,28 +1226,28 @@ layer {
   }
 }
 layer {
-  name: "relus6"
+  name: "relu20"
   type: "ReLU6"
   bottom: "power11"
-  top: "relus6"
+  top: "relu20"
 }
 layer {
   name: "power12"
   type: "Power"
-  bottom: "relus6"
+  bottom: "relu20"
   top: "power12"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul3"
+  name: "mul6"
   type: "Eltwise"
   bottom: "conv20"
   bottom: "power12"
-  top: "mul3"
+  top: "mul6"
   eltwise_param {
     operation: PROD
   }
@@ -1241,7 +1255,7 @@ layer {
 layer {
   name: "conv21"
   type: "Convolution"
-  bottom: "mul3"
+  bottom: "mul6"
   top: "conv21"
   convolution_param {
     num_output: 80
@@ -1262,7 +1276,7 @@ layer {
   bottom: "conv21"
   top: "conv21"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1298,7 +1312,7 @@ layer {
   bottom: "conv22"
   top: "conv22"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1322,28 +1336,28 @@ layer {
   }
 }
 layer {
-  name: "relus7"
+  name: "relu21"
   type: "ReLU6"
   bottom: "power13"
-  top: "relus7"
+  top: "relu21"
 }
 layer {
   name: "power14"
   type: "Power"
-  bottom: "relus7"
+  bottom: "relu21"
   top: "power14"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul4"
+  name: "mul7"
   type: "Eltwise"
   bottom: "conv22"
   bottom: "power14"
-  top: "mul4"
+  top: "mul7"
   eltwise_param {
     operation: PROD
   }
@@ -1351,7 +1365,7 @@ layer {
 layer {
   name: "conv23"
   type: "DepthwiseConvolution"
-  bottom: "mul4"
+  bottom: "mul7"
   top: "conv23"
   convolution_param {
     num_output: 200
@@ -1372,7 +1386,7 @@ layer {
   bottom: "conv23"
   top: "conv23"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1396,28 +1410,28 @@ layer {
   }
 }
 layer {
-  name: "relus8"
+  name: "relu22"
   type: "ReLU6"
   bottom: "power15"
-  top: "relus8"
+  top: "relu22"
 }
 layer {
   name: "power16"
   type: "Power"
-  bottom: "relus8"
+  bottom: "relu22"
   top: "power16"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul5"
+  name: "mul8"
   type: "Eltwise"
   bottom: "conv23"
   bottom: "power16"
-  top: "mul5"
+  top: "mul8"
   eltwise_param {
     operation: PROD
   }
@@ -1425,7 +1439,7 @@ layer {
 layer {
   name: "conv24"
   type: "Convolution"
-  bottom: "mul5"
+  bottom: "mul8"
   top: "conv24"
   convolution_param {
     num_output: 80
@@ -1446,7 +1460,7 @@ layer {
   bottom: "conv24"
   top: "conv24"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1492,7 +1506,7 @@ layer {
   bottom: "conv25"
   top: "conv25"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1516,28 +1530,28 @@ layer {
   }
 }
 layer {
-  name: "relus9"
+  name: "relu23"
   type: "ReLU6"
   bottom: "power17"
-  top: "relus9"
+  top: "relu23"
 }
 layer {
   name: "power18"
   type: "Power"
-  bottom: "relus9"
+  bottom: "relu23"
   top: "power18"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul6"
+  name: "mul9"
   type: "Eltwise"
   bottom: "conv25"
   bottom: "power18"
-  top: "mul6"
+  top: "mul9"
   eltwise_param {
     operation: PROD
   }
@@ -1545,7 +1559,7 @@ layer {
 layer {
   name: "conv26"
   type: "DepthwiseConvolution"
-  bottom: "mul6"
+  bottom: "mul9"
   top: "conv26"
   convolution_param {
     num_output: 184
@@ -1566,7 +1580,7 @@ layer {
   bottom: "conv26"
   top: "conv26"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1590,28 +1604,28 @@ layer {
   }
 }
 layer {
-  name: "relus10"
+  name: "relu24"
   type: "ReLU6"
   bottom: "power19"
-  top: "relus10"
+  top: "relu24"
 }
 layer {
   name: "power20"
   type: "Power"
-  bottom: "relus10"
+  bottom: "relu24"
   top: "power20"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul7"
+  name: "mul10"
   type: "Eltwise"
   bottom: "conv26"
   bottom: "power20"
-  top: "mul7"
+  top: "mul10"
   eltwise_param {
     operation: PROD
   }
@@ -1619,7 +1633,7 @@ layer {
 layer {
   name: "conv27"
   type: "Convolution"
-  bottom: "mul7"
+  bottom: "mul10"
   top: "conv27"
   convolution_param {
     num_output: 80
@@ -1640,7 +1654,7 @@ layer {
   bottom: "conv27"
   top: "conv27"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1686,7 +1700,7 @@ layer {
   bottom: "conv28"
   top: "conv28"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1710,28 +1724,28 @@ layer {
   }
 }
 layer {
-  name: "relus11"
+  name: "relu25"
   type: "ReLU6"
   bottom: "power21"
-  top: "relus11"
+  top: "relu25"
 }
 layer {
   name: "power22"
   type: "Power"
-  bottom: "relus11"
+  bottom: "relu25"
   top: "power22"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul8"
+  name: "mul11"
   type: "Eltwise"
   bottom: "conv28"
   bottom: "power22"
-  top: "mul8"
+  top: "mul11"
   eltwise_param {
     operation: PROD
   }
@@ -1739,7 +1753,7 @@ layer {
 layer {
   name: "conv29"
   type: "DepthwiseConvolution"
-  bottom: "mul8"
+  bottom: "mul11"
   top: "conv29"
   convolution_param {
     num_output: 184
@@ -1760,7 +1774,7 @@ layer {
   bottom: "conv29"
   top: "conv29"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1784,28 +1798,28 @@ layer {
   }
 }
 layer {
-  name: "relus12"
+  name: "relu26"
   type: "ReLU6"
   bottom: "power23"
-  top: "relus12"
+  top: "relu26"
 }
 layer {
   name: "power24"
   type: "Power"
-  bottom: "relus12"
+  bottom: "relu26"
   top: "power24"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul9"
+  name: "mul12"
   type: "Eltwise"
   bottom: "conv29"
   bottom: "power24"
-  top: "mul9"
+  top: "mul12"
   eltwise_param {
     operation: PROD
   }
@@ -1813,7 +1827,7 @@ layer {
 layer {
   name: "conv30"
   type: "Convolution"
-  bottom: "mul9"
+  bottom: "mul12"
   top: "conv30"
   convolution_param {
     num_output: 80
@@ -1834,7 +1848,7 @@ layer {
   bottom: "conv30"
   top: "conv30"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1880,7 +1894,7 @@ layer {
   bottom: "conv31"
   top: "conv31"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1904,28 +1918,28 @@ layer {
   }
 }
 layer {
-  name: "relus13"
+  name: "relu27"
   type: "ReLU6"
   bottom: "power25"
-  top: "relus13"
+  top: "relu27"
 }
 layer {
   name: "power26"
   type: "Power"
-  bottom: "relus13"
+  bottom: "relu27"
   top: "power26"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul10"
+  name: "mul13"
   type: "Eltwise"
   bottom: "conv31"
   bottom: "power26"
-  top: "mul10"
+  top: "mul13"
   eltwise_param {
     operation: PROD
   }
@@ -1933,7 +1947,7 @@ layer {
 layer {
   name: "conv32"
   type: "DepthwiseConvolution"
-  bottom: "mul10"
+  bottom: "mul13"
   top: "conv32"
   convolution_param {
     num_output: 480
@@ -1954,7 +1968,7 @@ layer {
   bottom: "conv32"
   top: "conv32"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -1999,15 +2013,15 @@ layer {
   }
 }
 layer {
-  name: "relu15"
-  type: "ReLU"
+  name: "relu28"
+  type: "ReLU6"
   bottom: "fc7"
-  top: "relu15"
+  top: "relu28"
 }
 layer {
   name: "fc8"
   type: "InnerProduct"
-  bottom: "relu15"
+  bottom: "relu28"
   top: "fc8"
   inner_product_param {
     num_output: 480
@@ -2032,19 +2046,19 @@ layer {
   }
 }
 layer {
-  name: "relus14"
+  name: "relu29"
   type: "ReLU6"
   bottom: "power27"
-  top: "relus14"
+  top: "relu29"
 }
 layer {
   name: "power28"
   type: "Power"
-  bottom: "relus14"
+  bottom: "relu29"
   top: "power28"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -2055,19 +2069,23 @@ layer {
   top: "route8"
 }
 layer {
-  name: "scale4"
+  name: "mul14"
+  #type: "Eltwise"
   type: "Scale"
   bottom: "conv32"
   bottom: "route8"
-  top: "scale4"
+  top: "mul14"
   scale_param {
     axis: 0
   }
+  #eltwise_param {
+  #  operation: PROD
+  #}
 }
 layer {
   name: "power29"
   type: "Power"
-  bottom: "scale4"
+  bottom: "mul14"
   top: "power29"
   power_param {
     power: 1.0
@@ -2076,28 +2094,28 @@ layer {
   }
 }
 layer {
-  name: "relus15"
+  name: "relu30"
   type: "ReLU6"
   bottom: "power29"
-  top: "relus15"
+  top: "relu30"
 }
 layer {
   name: "power30"
   type: "Power"
-  bottom: "relus15"
+  bottom: "relu30"
   top: "power30"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul11"
+  name: "mul15"
   type: "Eltwise"
-  bottom: "scale4"
+  bottom: "mul14"
   bottom: "power30"
-  top: "mul11"
+  top: "mul15"
   eltwise_param {
     operation: PROD
   }
@@ -2105,7 +2123,7 @@ layer {
 layer {
   name: "conv33"
   type: "Convolution"
-  bottom: "mul11"
+  bottom: "mul15"
   top: "conv33"
   convolution_param {
     num_output: 112
@@ -2126,7 +2144,7 @@ layer {
   bottom: "conv33"
   top: "conv33"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2162,7 +2180,7 @@ layer {
   bottom: "conv34"
   top: "conv34"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2186,28 +2204,28 @@ layer {
   }
 }
 layer {
-  name: "relus16"
+  name: "relu31"
   type: "ReLU6"
   bottom: "power31"
-  top: "relus16"
+  top: "relu31"
 }
 layer {
   name: "power32"
   type: "Power"
-  bottom: "relus16"
+  bottom: "relu31"
   top: "power32"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul12"
+  name: "mul16"
   type: "Eltwise"
   bottom: "conv34"
   bottom: "power32"
-  top: "mul12"
+  top: "mul16"
   eltwise_param {
     operation: PROD
   }
@@ -2215,7 +2233,7 @@ layer {
 layer {
   name: "conv35"
   type: "DepthwiseConvolution"
-  bottom: "mul12"
+  bottom: "mul16"
   top: "conv35"
   convolution_param {
     num_output: 672
@@ -2236,7 +2254,7 @@ layer {
   bottom: "conv35"
   top: "conv35"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2281,15 +2299,15 @@ layer {
   }
 }
 layer {
-  name: "relu16"
-  type: "ReLU"
+  name: "relu32"
+  type: "ReLU6"
   bottom: "fc9"
-  top: "relu16"
+  top: "relu32"
 }
 layer {
   name: "fc10"
   type: "InnerProduct"
-  bottom: "relu16"
+  bottom: "relu32"
   top: "fc10"
   inner_product_param {
     num_output: 672
@@ -2314,19 +2332,19 @@ layer {
   }
 }
 layer {
-  name: "relus17"
+  name: "relu33"
   type: "ReLU6"
   bottom: "power33"
-  top: "relus17"
+  top: "relu33"
 }
 layer {
   name: "power34"
   type: "Power"
-  bottom: "relus17"
+  bottom: "relu33"
   top: "power34"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -2337,19 +2355,23 @@ layer {
   top: "route10"
 }
 layer {
-  name: "scale5"
+  name: "mul17"
   type: "Scale"
+  #type: "Eltwise"
   bottom: "conv35"
   bottom: "route10"
-  top: "scale5"
+  top: "mul17"
   scale_param {
     axis: 0
   }
+  #eltwise_param {
+  #  operation: PROD
+  #}
 }
 layer {
   name: "power35"
   type: "Power"
-  bottom: "scale5"
+  bottom: "mul17"
   top: "power35"
   power_param {
     power: 1.0
@@ -2358,28 +2380,28 @@ layer {
   }
 }
 layer {
-  name: "relus18"
+  name: "relu34"
   type: "ReLU6"
   bottom: "power35"
-  top: "relus18"
+  top: "relu34"
 }
 layer {
   name: "power36"
   type: "Power"
-  bottom: "relus18"
+  bottom: "relu34"
   top: "power36"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul13"
+  name: "mul18"
   type: "Eltwise"
-  bottom: "scale5"
+  bottom: "mul17"
   bottom: "power36"
-  top: "mul13"
+  top: "mul18"
   eltwise_param {
     operation: PROD
   }
@@ -2387,7 +2409,7 @@ layer {
 layer {
   name: "conv36"
   type: "Convolution"
-  bottom: "mul13"
+  bottom: "mul18"
   top: "conv36"
   convolution_param {
     num_output: 112
@@ -2408,7 +2430,7 @@ layer {
   bottom: "conv36"
   top: "conv36"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2454,7 +2476,7 @@ layer {
   bottom: "conv37"
   top: "conv37"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2478,28 +2500,28 @@ layer {
   }
 }
 layer {
-  name: "relus19"
+  name: "relu35"
   type: "ReLU6"
   bottom: "power37"
-  top: "relus19"
+  top: "relu35"
 }
 layer {
   name: "power38"
   type: "Power"
-  bottom: "relus19"
+  bottom: "relu35"
   top: "power38"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul14"
+  name: "mul19"
   type: "Eltwise"
   bottom: "conv37"
   bottom: "power38"
-  top: "mul14"
+  top: "mul19"
   eltwise_param {
     operation: PROD
   }
@@ -2507,7 +2529,7 @@ layer {
 layer {
   name: "conv38"
   type: "DepthwiseConvolution"
-  bottom: "mul14"
+  bottom: "mul19"
   top: "conv38"
   convolution_param {
     num_output: 672
@@ -2528,7 +2550,7 @@ layer {
   bottom: "conv38"
   top: "conv38"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2573,15 +2595,15 @@ layer {
   }
 }
 layer {
-  name: "relu17"
-  type: "ReLU"
+  name: "relu36"
+  type: "ReLU6"
   bottom: "fc11"
-  top: "relu17"
+  top: "relu36"
 }
 layer {
   name: "fc12"
   type: "InnerProduct"
-  bottom: "relu17"
+  bottom: "relu36"
   top: "fc12"
   inner_product_param {
     num_output: 672
@@ -2606,19 +2628,19 @@ layer {
   }
 }
 layer {
-  name: "relus20"
+  name: "relu37"
   type: "ReLU6"
   bottom: "power39"
-  top: "relus20"
+  top: "relu37"
 }
 layer {
   name: "power40"
   type: "Power"
-  bottom: "relus20"
+  bottom: "relu37"
   top: "power40"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -2629,19 +2651,23 @@ layer {
   top: "route12"
 }
 layer {
-  name: "scale6"
+  name: "mul20"
+  #type: "Eltwise"
   type: "Scale"
   bottom: "conv38"
   bottom: "route12"
-  top: "scale6"
+  top: "mul20"
   scale_param {
     axis: 0
   }
+  #eltwise_param {
+  #  operation: PROD
+  #}
 }
 layer {
   name: "power41"
   type: "Power"
-  bottom: "scale6"
+  bottom: "mul20"
   top: "power41"
   power_param {
     power: 1.0
@@ -2650,28 +2676,28 @@ layer {
   }
 }
 layer {
-  name: "relus21"
+  name: "relu38"
   type: "ReLU6"
   bottom: "power41"
-  top: "relus21"
+  top: "relu38"
 }
 layer {
   name: "power42"
   type: "Power"
-  bottom: "relus21"
+  bottom: "relu38"
   top: "power42"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul15"
+  name: "mul21"
   type: "Eltwise"
-  bottom: "scale6"
+  bottom: "mul20"
   bottom: "power42"
-  top: "mul15"
+  top: "mul21"
   eltwise_param {
     operation: PROD
   }
@@ -2679,7 +2705,7 @@ layer {
 layer {
   name: "conv39"
   type: "Convolution"
-  bottom: "mul15"
+  bottom: "mul21"
   top: "conv39"
   convolution_param {
     num_output: 160
@@ -2700,7 +2726,7 @@ layer {
   bottom: "conv39"
   top: "conv39"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2736,7 +2762,7 @@ layer {
   bottom: "conv40"
   top: "conv40"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2760,28 +2786,28 @@ layer {
   }
 }
 layer {
-  name: "relus22"
+  name: "relu39"
   type: "ReLU6"
   bottom: "power43"
-  top: "relus22"
+  top: "relu39"
 }
 layer {
   name: "power44"
   type: "Power"
-  bottom: "relus22"
+  bottom: "relu39"
   top: "power44"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul16"
+  name: "mul22"
   type: "Eltwise"
   bottom: "conv40"
   bottom: "power44"
-  top: "mul16"
+  top: "mul22"
   eltwise_param {
     operation: PROD
   }
@@ -2789,7 +2815,7 @@ layer {
 layer {
   name: "conv41"
   type: "DepthwiseConvolution"
-  bottom: "mul16"
+  bottom: "mul22"
   top: "conv41"
   convolution_param {
     num_output: 672
@@ -2810,7 +2836,7 @@ layer {
   bottom: "conv41"
   top: "conv41"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -2855,15 +2881,15 @@ layer {
   }
 }
 layer {
-  name: "relu18"
-  type: "ReLU"
+  name: "relu40"
+  type: "ReLU6"
   bottom: "fc13"
-  top: "relu18"
+  top: "relu40"
 }
 layer {
   name: "fc14"
   type: "InnerProduct"
-  bottom: "relu18"
+  bottom: "relu40"
   top: "fc14"
   inner_product_param {
     num_output: 672
@@ -2888,19 +2914,19 @@ layer {
   }
 }
 layer {
-  name: "relus23"
+  name: "relu41"
   type: "ReLU6"
   bottom: "power45"
-  top: "relus23"
+  top: "relu41"
 }
 layer {
   name: "power46"
   type: "Power"
-  bottom: "relus23"
+  bottom: "relu41"
   top: "power46"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -2911,19 +2937,23 @@ layer {
   top: "route14"
 }
 layer {
-  name: "scale7"
+  name: "mul23"
+  #type: "Eltwise"
   type: "Scale"
   bottom: "conv41"
   bottom: "route14"
-  top: "scale7"
+  top: "mul23"
   scale_param {
     axis: 0
   }
+  #eltwise_param {
+  #  operation: PROD
+  #}
 }
 layer {
   name: "power47"
   type: "Power"
-  bottom: "scale7"
+  bottom: "mul23"
   top: "power47"
   power_param {
     power: 1.0
@@ -2932,28 +2962,28 @@ layer {
   }
 }
 layer {
-  name: "relus24"
+  name: "relu42"
   type: "ReLU6"
   bottom: "power47"
-  top: "relus24"
+  top: "relu42"
 }
 layer {
   name: "power48"
   type: "Power"
-  bottom: "relus24"
+  bottom: "relu42"
   top: "power48"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul17"
+  name: "mul24"
   type: "Eltwise"
-  bottom: "scale7"
+  bottom: "mul23"
   bottom: "power48"
-  top: "mul17"
+  top: "mul24"
   eltwise_param {
     operation: PROD
   }
@@ -2961,7 +2991,7 @@ layer {
 layer {
   name: "conv42"
   type: "Convolution"
-  bottom: "mul17"
+  bottom: "mul24"
   top: "conv42"
   convolution_param {
     num_output: 160
@@ -2982,7 +3012,7 @@ layer {
   bottom: "conv42"
   top: "conv42"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -3018,7 +3048,7 @@ layer {
   bottom: "conv43"
   top: "conv43"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -3042,28 +3072,28 @@ layer {
   }
 }
 layer {
-  name: "relus25"
+  name: "relu43"
   type: "ReLU6"
   bottom: "power49"
-  top: "relus25"
+  top: "relu43"
 }
 layer {
   name: "power50"
   type: "Power"
-  bottom: "relus25"
+  bottom: "relu43"
   top: "power50"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul18"
+  name: "mul25"
   type: "Eltwise"
   bottom: "conv43"
   bottom: "power50"
-  top: "mul18"
+  top: "mul25"
   eltwise_param {
     operation: PROD
   }
@@ -3071,7 +3101,7 @@ layer {
 layer {
   name: "conv44"
   type: "DepthwiseConvolution"
-  bottom: "mul18"
+  bottom: "mul25"
   top: "conv44"
   convolution_param {
     num_output: 960
@@ -3092,7 +3122,7 @@ layer {
   bottom: "conv44"
   top: "conv44"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -3137,15 +3167,15 @@ layer {
   }
 }
 layer {
-  name: "relu19"
-  type: "ReLU"
+  name: "relu44"
+  type: "ReLU6"
   bottom: "fc15"
-  top: "relu19"
+  top: "relu44"
 }
 layer {
   name: "fc16"
   type: "InnerProduct"
-  bottom: "relu19"
+  bottom: "relu44"
   top: "fc16"
   inner_product_param {
     num_output: 960
@@ -3170,19 +3200,19 @@ layer {
   }
 }
 layer {
-  name: "relus26"
+  name: "relu45"
   type: "ReLU6"
   bottom: "power51"
-  top: "relus26"
+  top: "relu45"
 }
 layer {
   name: "power52"
   type: "Power"
-  bottom: "relus26"
+  bottom: "relu45"
   top: "power52"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
@@ -3193,19 +3223,23 @@ layer {
   top: "route16"
 }
 layer {
-  name: "scale8"
+  name: "mul26"
+  #type: "Eltwise"
   type: "Scale"
   bottom: "conv44"
   bottom: "route16"
-  top: "scale8"
+  top: "mul26"
   scale_param {
     axis: 0
   }
+  #eltwise_param {
+  #  operation: PROD
+  #}
 }
 layer {
   name: "power53"
   type: "Power"
-  bottom: "scale8"
+  bottom: "mul26"
   top: "power53"
   power_param {
     power: 1.0
@@ -3214,28 +3248,28 @@ layer {
   }
 }
 layer {
-  name: "relus27"
+  name: "relu46"
   type: "ReLU6"
   bottom: "power53"
-  top: "relus27"
+  top: "relu46"
 }
 layer {
   name: "power54"
   type: "Power"
-  bottom: "relus27"
+  bottom: "relu46"
   top: "power54"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul19"
+  name: "mul27"
   type: "Eltwise"
-  bottom: "scale8"
+  bottom: "mul26"
   bottom: "power54"
-  top: "mul19"
+  top: "mul27"
   eltwise_param {
     operation: PROD
   }
@@ -3243,7 +3277,7 @@ layer {
 layer {
   name: "conv45"
   type: "Convolution"
-  bottom: "mul19"
+  bottom: "mul27"
   top: "conv45"
   convolution_param {
     num_output: 160
@@ -3264,7 +3298,7 @@ layer {
   bottom: "conv45"
   top: "conv45"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -3310,7 +3344,7 @@ layer {
   bottom: "conv46"
   top: "conv46"
   batch_norm_param {
-    eps: 9.999999747378752e-06
+    eps: 9.99999974738e-06
   }
 }
 layer {
@@ -3334,28 +3368,28 @@ layer {
   }
 }
 layer {
-  name: "relus28"
+  name: "relu47"
   type: "ReLU6"
   bottom: "power55"
-  top: "relus28"
+  top: "relu47"
 }
 layer {
   name: "power56"
   type: "Power"
-  bottom: "relus28"
+  bottom: "relu47"
   top: "power56"
   power_param {
     power: 1.0
-    scale: 0.1666666716337204
+    scale: 0.166666671634
     shift: 0.0
   }
 }
 layer {
-  name: "mul20"
+  name: "mul28"
   type: "Eltwise"
   bottom: "conv46"
   bottom: "power56"
-  top: "mul20"
+  top: "mul28"
   eltwise_param {
     operation: PROD
   }
@@ -3363,86 +3397,97 @@ layer {
 layer {
   name: "ave_pool9"
   type: "Pooling"
-  bottom: "mul20"
-  top: "ave_pool9"
+  bottom: "mul28"
+  top: "output"
   pooling_param {
     pool: AVE
     global_pooling: true
   }
 }
-layer {
-  name: "route17"
-  type: "Concat"
-  bottom: "ave_pool9"
-  top: "route17"
-}
-layer {
-  name: "fc17"
-  type: "InnerProduct"
-  bottom: "route17"
-  top: "fc17"
-  inner_product_param {
-    num_output: 1280
-    bias_term: true
-    weight_filler {
-      type: "xavier"
-    }
-    bias_filler {
-      type: "constant"
-    }
-  }
-}
-layer {
-  name: "power57"
-  type: "Power"
-  bottom: "fc17"
-  top: "power57"
-  power_param {
-    power: 1.0
-    scale: 1.0
-    shift: 3.0
-  }
-}
-layer {
-  name: "relus29"
-  type: "ReLU6"
-  bottom: "power57"
-  top: "relus29"
-}
-layer {
-  name: "power58"
-  type: "Power"
-  bottom: "relus29"
-  top: "power58"
-  power_param {
-    power: 1.0
-    scale: 0.1666666716337204
-    shift: 0.0
-  }
-}
-layer {
-  name: "mul21"
-  type: "Eltwise"
-  bottom: "fc17"
-  bottom: "power58"
-  top: "mul21"
-  eltwise_param {
-    operation: PROD
-  }
-}
-layer {
-  name: "fc18"
-  type: "InnerProduct"
-  bottom: "mul21"
-  top: "fc18"
-  inner_product_param {
-    num_output: 1000
-    bias_term: true
-    weight_filler {
-      type: "xavier"
-    }
-    bias_filler {
-      type: "constant"
-    }
-  }
-}
+#layer {
+#  name: "route17"
+#  type: "Concat"
+#  bottom: "ave_pool9"
+#  top: "route17"
+#}
+#layer {
+#  name: "fc17"
+#  type: "InnerProduct"
+#  bottom: "route17"
+#  top: "fc17"
+#  inner_product_param {
+#    num_output: 1280
+#    bias_term: true
+#    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#    }
+#  }
+#}
+#layer {
+#  name: "power57"
+#  type: "Power"
+#  bottom: "fc17"
+#  top: "power57"
+#  power_param {
+#    power: 1.0
+#    scale: 1.0
+#    shift: 3.0
+#  }
+#}
+#layer {
+#  name: "relu48"
+#  type: "ReLU6"
+#  bottom: "power57"
+#  top: "relu48"
+#}
+#layer {
+#  name: "power58"
+#  type: "Power"
+#  bottom: "relu48"
+#  top: "power58"
+#  power_param {
+#    power: 0.0
+#    scale: 0.166666671634
+#    shift: 0.0
+#  }
+#}
+#layer {
+#  name: "mul29"
+#  type: "Eltwise"
+#  bottom: "fc17"
+#  bottom: "power58"
+#  top: "mul29"
+#  eltwise_param {
+#    operation: PROD
+#  }
+#}
+#layer {
+#  name: "ave_pool10"
+#  type: "Pooling"
+#  bottom: "mul29"
+#  top: "output"
+#  pooling_param {
+#    pool: AVE
+#    global_pooling: true
+#  }
+#}
+#
+#layer {
+#  name: "fc18"
+#  type: "InnerProduct"
+#  bottom: "mul29"
+#  top: "fc18"
+#  inner_product_param {
+#    num_output: 1000
+#    bias_term: true
+#    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#    }
+#  }
+#}
